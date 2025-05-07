@@ -1,0 +1,36 @@
+10. Write a program read the temperature
+sensor and send the values to the serial
+monitor on the computer
+
+Tools -&gt; Serial Monitor ( To see output )
+
+12. Write a program to show the temperature
+and shows a graph of the recent
+measurements
+
+Tools -&gt; Serial Plotter ( To see output )
+
+#include &lt;dht.h&gt;
+
+dht DHT;
+
+#define DHT11_PIN A1
+
+void setup()
+{
+Serial.begin(9600);
+Serial.println(&quot;Humidity (%),\tTemperature
+(C)&quot;);
+}
+
+void loop()
+{
+// READ DATA
+int chk = DHT.read11(DHT11_PIN);
+// DISPLAY DATA
+Serial.print(DHT.humidity, 1);
+Serial.print(&quot;\t&quot;);
+Serial.println(DHT.temperature, 1);
+
+delay(1000);
+}

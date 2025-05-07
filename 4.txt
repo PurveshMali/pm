@@ -1,0 +1,87 @@
+7. Create a program so that when the user enters ‘b’ the green light blinks, ‘g’
+the green light is illuminated ‘y’ the yellow light is illuminated and ‘r’ the red
+light is illuminated.
+const int green_led = 0;
+const int yellow_led = 1;
+const int red_led = 2;
+
+void setup() {
+// put your setup code here, to run once:
+Serial.begin(9600);
+}
+
+char key=0;
+void loop() {
+
+Serial.begin(9600);
+while(1)
+
+{
+key = Serial.read();
+if((key == &#39;b&#39;)||(key == &#39;B&#39;)) break;
+if((key == &#39;g&#39;)||(key == &#39;G&#39;)) break;
+if((key == &#39;r&#39;)||(key == &#39;R&#39;)) break;
+if((key == &#39;y&#39;)||(key == &#39;Y&#39;)) break;
+delay(100);
+}
+//Serial.println((char)key);
+Serial.end();
+delay(200);
+
+pinMode(green_led, OUTPUT);
+pinMode(red_led, OUTPUT);
+pinMode(yellow_led, OUTPUT);
+
+if((key == &#39;b&#39;)||(key == &#39;B&#39;))
+
+{
+digitalWrite(yellow_led,HIGH);
+digitalWrite(red_led,HIGH);
+for(int i=0;i&lt;10;i++){
+digitalWrite(green_led,LOW);
+delay(500);
+digitalWrite(green_led,HIGH);
+delay(500);
+}
+key = 0;
+}
+
+if((key == &#39;g&#39;)||(key == &#39;G&#39;))
+{
+digitalWrite(yellow_led,HIGH);
+digitalWrite(green_led,LOW);
+
+digitalWrite(red_led,HIGH);
+delay(5000);
+digitalWrite(yellow_led,HIGH);
+digitalWrite(green_led,HIGH);
+digitalWrite(red_led,HIGH);
+key = 0;
+}
+
+else if((key == &#39;y&#39;)||(key == &#39;Y&#39;))
+{
+digitalWrite(yellow_led,LOW);
+digitalWrite(green_led,HIGH);
+digitalWrite(red_led,HIGH);
+delay(5000);
+digitalWrite(yellow_led,HIGH);
+digitalWrite(green_led,HIGH);
+digitalWrite(red_led,HIGH);
+
+key = 0;
+}
+
+else if((key == &#39;r&#39;)||(key == &#39;R&#39;))
+{
+digitalWrite(yellow_led,HIGH);
+digitalWrite(green_led,HIGH);
+digitalWrite(red_led,LOW);
+delay(5000);
+digitalWrite(yellow_led,HIGH);
+digitalWrite(green_led,HIGH);
+digitalWrite(red_led,HIGH);
+key = 0;
+}
+
+}

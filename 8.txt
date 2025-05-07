@@ -1,0 +1,36 @@
+11. Write a program so it displays the
+temperature in Fahrenheit as well as the
+maximum and
+minimum temperatures it has seen
+
+#include &lt;dht.h&gt;
+
+dht DHT;
+
+#define DHT11_PIN A1
+float min_t,max_t;
+void setup()
+{
+Serial.begin(9600);
+Serial.println(&quot;Humidity (%),\tTemperature
+(C),\t Temperature(F)&quot;);
+min_t = 0xffff;
+max_t=0x00;
+}
+
+void loop()
+{
+// READ DATA
+int chk = DHT.read11(DHT11_PIN);
+// DISPLAY DATA
+Serial.print(DHT.humidity, 1);
+Serial.print(&quot;\t&quot;);
+Serial.println(DHT.temperature, 1);
+Serial.println(&quot;\t&quot;);
+Serial.println((DHT.temperature*1.8)+32, 1);
+Serial.println(&quot;\t&quot;);
+delay(1000);
+}
+//
+// END OF FILE
+//
