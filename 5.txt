@@ -8,13 +8,14 @@ Serial.println(&quot;input the number&quot;);
 }
 
 void loop() {
-// put your main code here, to run
-repeatedly:
+    // put your main code here, to run
+    repeatedly:
 
-int input = Serial.parseInt(); // keep other
-operations outside the sq function
-int inputSquared = sq(input);
-Serial.print(int(inputSquared));
-
+    if(Serial.available > 0){
+        int input = Serial.parseInt(); // keep other
+        operations outside the sq function
+        int inputSquared = sq(input);
+        Serial.print(int(inputSquared));
+    }
 delay(500);
 }
